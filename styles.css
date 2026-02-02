@@ -36,13 +36,13 @@ body {
     height: 300px;
 }
 
-.book-cover:last-child {
+#add-book-cover {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.book-cover svg {
+#add-book-cover svg {
     fill: #fff;
     width: 100px;
 }
