@@ -19,7 +19,6 @@ body {
 #bookcase {
     border: 5px solid red;
     display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
     grid-template-columns: repeat(5, 300px);
 }
 
@@ -45,4 +44,29 @@ body {
 #add-book-cover svg {
     fill: #fff;
     width: 100px;
+}
+
+#book-form {
+    visibility: hidden;
+    border: 5px solid orange;
+    position: absolute;
+    width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #414141;
+}
+
+.book-query {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
+
+.book-query input {
+    height: 30px;
+    font-size: 1.2rem;
+    padding-left: 5px;
 }
