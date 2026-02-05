@@ -12,12 +12,6 @@
 <body>
     <div id="bookcase">
 
-        <div class="book">
-            <div class="book-cover"></div>
-            <p class="book-author">Someone somebody</p>
-            <p class="book-title">A very cool book indeed</p>
-        </div>
-
         <div class="book" id="add-book">
             <div class="book-cover" id="add-book-cover">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -29,7 +23,12 @@
 
     </div>
     <div id="book-form">
-        <form>
+        <svg id="cancel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>Cancel</title>
+            <path
+                d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
+        </svg>
+        <form id="form">
 
             <div class="book-query">
                 <label for="cover">Provide the cover of the book (optional)</label>
