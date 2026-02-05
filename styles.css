@@ -33,6 +33,43 @@ body {
     border: 3px solid rgb(108, 16, 194);
     width: 200px;
     height: 300px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr auto;
+}
+
+.genre-list {
+    list-style-type: none;
+    margin: 10px;
+}
+
+.genre {
+    margin: 5px 0;
+}
+
+.read-status {
+    width: 30px;
+    justify-self: right;
+    margin: 10px;
+}
+
+#read {
+    display: none;
+    fill: #21cf4c7a;
+}
+
+#not-read {
+    display: block;
+    fill: #cf21217a;
+}
+
+.rating {
+    margin: 10px;
+}
+
+.page-count {
+    justify-self: right;
+    margin: 10px;
 }
 
 #add-book-cover {
@@ -48,12 +85,11 @@ body {
 
 #book-form {
     top: 150px;
-    visibility: hidden;
     border: 5px solid orange;
     position: absolute;
     width: 700px;
     height: 500px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background-color: #414141;
@@ -73,7 +109,7 @@ body {
 }
 
 .err {
-    visibility: hidden;
+    display: none;
     position: absolute;
     top: 60px;
     color: rgba(255, 0, 0, 0.699);
