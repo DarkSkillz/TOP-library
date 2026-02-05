@@ -4,6 +4,7 @@ const addBook = document.getElementById("add-book")
 const bookForm = document.getElementById("book-form")
 const submitBtn = document.getElementById("submit")
 const form = document.getElementById("form")
+const errorMessage = document.querySelector(".err")
 
 function Book(title, author, pages, genres, read) {
      if (!new.target) {
@@ -43,19 +44,27 @@ addBook.addEventListener("click", () => {
 
 document.getElementById("cancel").addEventListener("click", () => {
     bookForm.style.visibility = "hidden"
+    errorMessage.style.visibility = "hidden"
     form.reset()
 })
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault()
-    document.querySelectorAll(".removable").forEach((btn)=>{
-        bookcase.removeChild(btn)
-    })
     const formData = new FormData(form)
     const objectData = Object.fromEntries(formData)
-    bookForm.style.visibility = "hidden" //! Change to check for validity first
-    addBookToLibrary(objectData.title, objectData.author)
-    library.forEach(addBookToCase)
-    console.log(library);
-    form.reset()
+    if (objectData.title == "" || objectData.author == "") {
+        errorMessage.style.visibility = "visible"
+        return
+    }
+    else {
+        document.querySelectorAll(".removable").forEach((btn)=>{
+        bookcase.removeChild(btn)
+    })
+        errorMessage.style.visibility = "hidden"
+        bookForm.style.visibility = "hidden"
+        console.log(objectData);
+        addBookToLibrary(objectData.title, objectData.author)
+        library.forEach(addBookToCase)
+        form.reset()
+    }
 })
