@@ -34,6 +34,7 @@
                 <span class="rating">A+</span>
                 <span class="page-count">447</span>
             </div>
+
             <p class="book-author">Stephen King</p>
             <p class="book-title">The Shining</p>
         </div>
@@ -70,6 +71,40 @@
             <div class="book-query">
                 <label for="author">Enter the book's author</label>
                 <input type="text" name="author" id="author">
+            </div>
+
+            <div class="book-query">
+                <label for="genres">Enter the book's genres (optional)</label>
+                <input type="text" name="genres" id="genres" placeholder="Separate by commas ,">
+            </div>
+
+            <div class="book-query">
+                <label for="pages">Enter the book's page count (optional)</label>
+                <input type="number" name="pages" id="pages">
+            </div>
+
+            <div class="book-query">
+                <label for="rating">Rate the book (optional)</label>
+                <select name="rating" id="rating">
+                    <option value="None" selected="true" id="default">None</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
+
+            <div class="book-query">
+                <div class="radio">
+                    <label for="read-status-read">Read</label>
+                    <input type="radio" name="readS" id="read-status-read" value="Read">
+                </div>
+                <div class="radio">
+                    <label for="read-status-not-read">Not Read</label>
+                    <input type="radio" name="readS" id="read-status-not-read" value="Not Read" checked>
+                </div>
             </div>
 
             <div class="book-query">

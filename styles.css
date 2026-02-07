@@ -54,12 +54,12 @@ body {
 }
 
 #read {
-    display: none;
+    display: inline;
     fill: #21cf4c7a;
 }
 
 #not-read {
-    display: block;
+    display: inline;
     fill: #cf21217a;
 }
 
@@ -84,11 +84,11 @@ body {
 }
 
 #book-form {
-    top: 150px;
+    top: 50px;
     border: 5px solid orange;
     position: absolute;
     width: 700px;
-    height: 500px;
+    height: 800px;
     display: none;
     justify-content: center;
     align-items: center;
@@ -102,16 +102,46 @@ body {
     font-size: 1.5rem;
 }
 
-.book-query input {
+.book-query label {
+    margin-bottom: 5px;
+}
+
+.book-query input,
+select {
     height: 30px;
     font-size: 1.2rem;
     padding-left: 5px;
 }
 
+.book-query:nth-child(7) {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#submit {
+    padding: 0;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+}
+
+#read-status-read,
+#read-status-not-read {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    width: 15px;
+}
+
+#default {
+    color: #00000085;
+}
+
 .err {
     display: none;
     position: absolute;
-    top: 60px;
+    top: 50px;
     color: rgba(255, 0, 0, 0.699);
 }
 
