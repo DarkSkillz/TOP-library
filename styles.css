@@ -30,12 +30,20 @@ body {
 }
 
 .book-cover {
-    border: 3px solid rgb(108, 16, 194);
     width: 200px;
     height: 300px;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: 1fr auto;
+}
+
+.hasCover {
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.4;
+    width: 200px;
+    height: 300px;
 }
 
 .genre-list {
