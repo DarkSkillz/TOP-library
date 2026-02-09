@@ -41,12 +41,25 @@ body {
     fill: #a01313b4;
 }
 
+.edit-book {
+    fill: #1350a07e;
+    width: 30px;
+    position: relative;
+    top: 25px;
+    left: 125px;
+}
+
+.edit-book:hover {
+    fill: #1350a0b4;
+}
+
 .book-cover {
     width: 200px;
     height: 300px;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: 1fr auto;
+    margin-top: -35px;
 }
 
 .hasCover {
@@ -103,6 +116,10 @@ body {
     width: 100px;
 }
 
+form {
+    margin-top: 30px;
+}
+
 #book-form {
     top: 50px;
     border: 5px solid orange;
@@ -138,8 +155,18 @@ select {
     font-size: 1rem;
 }
 
-#submit {
+#submit-add,
+#submit-change {
     padding: 0;
+
+}
+
+#submit-add {
+    display: inline;
+}
+
+#submit-change {
+    display: none;
 }
 
 .radio {
