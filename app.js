@@ -4,7 +4,8 @@ const addBook = document.getElementById("add-book")
 const bookForm = document.getElementById("book-form")
 const submitBtn = document.getElementById("submit")
 const form = document.getElementById("form")
-const errorMessage = document.querySelector(".err")
+const errorMessageInfo = document.getElementById("missing-info")
+const errorMessageType = document.getElementById("invalid-type")
 
 // Book object constructor
 function Book(title, author, pages, genres, read, rating, cover) {
@@ -91,7 +92,8 @@ addBook.addEventListener("click", () => {
 // Cancel button
 document.getElementById("cancel").addEventListener("click", () => {
     bookForm.style.display = "none"
-    errorMessage.style.display = "none"
+    errorMessageInfo.style.display = "none"
+    errorMessageType.style.display = "none"
     form.reset()
 })
 
@@ -101,15 +103,19 @@ submitBtn.addEventListener("click", (e) => {
     const formData = new FormData(form)
     const objectData = Object.fromEntries(formData)
     if (objectData.title == "" || objectData.author == "") {
-        errorMessage.style.display = "inline"
+        errorMessageInfo.style.display = "inline"
         return
     }
-    //! validate here
+    else if (objectData.cover.type.slice(0,5) !== "image") {
+        errorMessageType.style.display = "inline"
+        return
+    }
     else {
         document.querySelectorAll(".removable").forEach((btn)=>{
         bookcase.removeChild(btn)
     })
-        errorMessage.style.display = "none"
+        errorMessageInfo.style.display = "none"
+        errorMessageType.style.display = "none"
         bookForm.style.display = "none"
         const genreString = objectData.genres.split(",")
         // Book cover handling

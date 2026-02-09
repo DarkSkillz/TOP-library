@@ -153,6 +153,14 @@ select {
     color: rgba(255, 0, 0, 0.699);
 }
 
+#missing-info {
+    top: 40px;
+}
+
+#invalid-type {
+    top: 60px;
+}
+
 #cancel {
     width: 50px;
     position: absolute;
