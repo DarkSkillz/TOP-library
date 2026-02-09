@@ -29,6 +29,18 @@ body {
     align-items: center;
 }
 
+.remove-book {
+    fill: #a013137e;
+    width: 30px;
+    position: relative;
+    top: 10px;
+    left: 125px;
+}
+
+.remove-book:hover {
+    fill: #a01313b4;
+}
+
 .book-cover {
     width: 200px;
     height: 300px;
