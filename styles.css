@@ -132,6 +132,16 @@ form {
     background-color: #414141;
 }
 
+.check {
+    display: none;
+    gap: 10px;
+    margin-top: -7px;
+}
+
+.check input {
+    width: 15px;
+}
+
 .book-query {
     display: flex;
     flex-direction: column;
@@ -141,6 +151,14 @@ form {
 
 .book-query label {
     margin-bottom: 5px;
+}
+
+.book-query label[for=pages] {
+    font-size: 1.5rem;
+}
+
+.book-query label[for=rating] {
+    font-size: 1.5rem;
 }
 
 .book-query input,
@@ -179,10 +197,6 @@ select {
     margin-left: 5px;
     margin-bottom: 5px;
     width: 15px;
-}
-
-#default {
-    color: #00000085;
 }
 
 .err {

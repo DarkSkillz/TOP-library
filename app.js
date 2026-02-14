@@ -9,6 +9,15 @@ const form = document.getElementById("form")
 const errorMessageInfo = document.getElementById("missing-info")
 const errorMessageType = document.getElementById("invalid-type")
 const removeBookBtn = document.querySelector(".remove-book")
+const coverInput = document.getElementById("cover")
+const titleInput = document.getElementById("title")
+const authorInput = document.getElementById("author")
+const genresInput = document.getElementById("genres")
+const pagesInput = document.getElementById("pages")
+const optionInput = document.getElementById("rating").children
+const readInput = document.getElementById("read-status-read")
+const notReadInput = document.getElementById("read-status-not-read")
+const checkBtn = document.querySelector(".check")
 
 // Book object constructor
 function Book(title, author, pages, genres, read, rating, cover) {
@@ -112,13 +121,45 @@ function addBookToCase(element) {
     editBook.addEventListener("click", (e)=>{
         bookForm.style.display = "flex"
         changeBtn.style.display = "inline"
+        checkBtn.style.display = "flex"
         submitBtn.style.display = "none"
         errorMessageInfo.style.display = "none"
         errorMessageType.style.display = "none"
+        coverInput.setAttribute("disabled","")
         const bookID = e.currentTarget.id
         currentEdit.splice(0,1)
         currentEdit.push(bookID)
+        // Show the current details to make editing easier
+        titleInput.setAttribute("value",element.title)
+        authorInput.setAttribute("value",element.author)
+        genresInput.setAttribute("value",element.genres)
+        pagesInput.setAttribute("value",element.pages)
+        Array.prototype.forEach.call(optionInput, (item)=>{
+            if (item.value == element.rating) {
+                item.setAttribute("selected","")
+            }
+        })
+        if (element.read == "Read") {
+            readInput.setAttribute("checked","")
+            notReadInput.removeAttribute("checked")
+        } else {    
+            readInput.removeAttribute("checked")
+            notReadInput.setAttribute("checked","true")
+        }
 })
+}
+
+// Reset form
+function resetForm() {
+    titleInput.setAttribute("value","")
+    authorInput.setAttribute("value","")
+    genresInput.setAttribute("value","")
+    pagesInput.setAttribute("value","")
+    Array.prototype.forEach.call(optionInput,(item)=>{
+        item.removeAttribute("selected")
+    })
+    readInput.removeAttribute("checked")
+    notReadInput.setAttribute("checked","")
 }
 
 // Add book screen button
@@ -126,8 +167,11 @@ addBook.addEventListener("click", () => {
     bookForm.style.display = "flex"
     changeBtn.style.display = "none"
     submitBtn.style.display = "inline"
+    checkBtn.style.display = "none"
     errorMessageInfo.style.display = "none"
     errorMessageType.style.display = "none"
+    coverInput.removeAttribute("disabled")
+    resetForm()
 })
 
 // Cancel button
@@ -136,7 +180,13 @@ document.getElementById("cancel").addEventListener("click", () => {
     errorMessageInfo.style.display = "none"
     errorMessageType.style.display = "none"
     changeBtn.style.display = "none"
+    checkBtn.style.display = "none"
     form.reset()
+})
+
+// Keep image button
+checkBtn.lastElementChild.addEventListener("click", ()=>{
+    coverInput.toggleAttribute("disabled")
 })
 
 // Add book to display button
@@ -184,13 +234,12 @@ submitBtn.addEventListener("click", (e) => {
 changeBtn.addEventListener("click",(e)=>{
     e.preventDefault()
     const formDataEdit = new FormData(form)
-    const objectDataEdit = Object.fromEntries(formDataEdit)
-    
-     if (objectDataEdit.title == "" || objectDataEdit.author == "") {
+    const objectDataEdit = Object.fromEntries(formDataEdit)  
+    if (objectDataEdit.title == "" || objectDataEdit.author == "") {
         errorMessageInfo.style.display = "inline"
         return
     }
-    else if (objectDataEdit.cover.name !== "" && objectDataEdit.cover.type.slice(0,5) !== "image") {
+    else if (!coverInput.hasAttribute("disabled") && objectDataEdit.cover.name !== "" && objectDataEdit.cover.type.slice(0,5) !== "image") {
         errorMessageType.style.display = "inline"
         return
     }
@@ -203,7 +252,19 @@ changeBtn.addEventListener("click",(e)=>{
         bookForm.style.display = "none"
         const genreString = objectDataEdit.genres.split(",")
         // Book cover handling
-        if (objectDataEdit.cover.name !== "") {
+        if (coverInput.hasAttribute("disabled")) {
+            const bookID = currentEdit[0]
+            const index = library.findIndex(item => item.id == bookID)
+            library[index].title = objectDataEdit.title
+            library[index].author = objectDataEdit.author
+            library[index].pages = objectDataEdit.pages
+            library[index].genres = genreString
+            library[index].read = objectDataEdit.readS
+            library[index].rating = objectDataEdit.rating
+            library.forEach(addBookToCase)
+            form.reset()
+        }
+        else if (objectDataEdit.cover.name !== "") {
             const file = objectDataEdit.cover
             const reader = new FileReader()
             reader.readAsDataURL(file)
@@ -231,9 +292,9 @@ changeBtn.addEventListener("click",(e)=>{
             library[index].genres = genreString
             library[index].read = objectDataEdit.readS
             library[index].rating = objectDataEdit.rating
+            library[index].cover = undefined
             library.forEach(addBookToCase)
             form.reset()
         }
     }
-
 })
