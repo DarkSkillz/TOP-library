@@ -79,7 +79,7 @@ function addBookToCase(element) {
     removeBook.innerHTML =  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Remove book</title><path d="M13 19C13 20.1 13.3 21.12 13.81 22H6C4.89 22 4 21.11 4 20V4C4 2.9 4.89 2 6 2H7V9L9.5 7.5L12 9V2H18C19.1 2 20 2.89 20 4V13.09C19.67 13.04 19.34 13 19 13C15.69 13 13 15.69 13 19M22.54 16.88L21.12 15.47L19 17.59L16.88 15.47L15.47 16.88L17.59 19L15.47 21.12L16.88 22.54L19 20.41L21.12 22.54L22.54 21.12L20.41 19L22.54 16.88Z" /></svg>'
     editBook.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Edit book</title><path d="M19.39 10.74L11 19.13V22H6C4.89 22 4 21.11 4 20V4C4 2.9 4.89 2 6 2H7V9L9.5 7.5L12 9V2H18C19.1 2 20 2.89 20 4V10.3C19.78 10.42 19.57 10.56 19.39 10.74M13 19.96V22H15.04L21.17 15.88L19.13 13.83L13 19.96M22.85 13.47L21.53 12.15C21.33 11.95 21 11.95 20.81 12.15L19.83 13.13L21.87 15.17L22.85 14.19C23.05 14 23.05 13.67 22.85 13.47Z" /></svg>'
     if (element.cover == undefined) {
-        bookImage.src = "default.png"
+        bookImage.src = "default.jpg"
     } 
     else {
         bookImage.src = element.cover
@@ -182,6 +182,7 @@ document.getElementById("cancel").addEventListener("click", () => {
     changeBtn.style.display = "none"
     checkBtn.style.display = "none"
     form.reset()
+    resetForm()
 })
 
 // Keep image button

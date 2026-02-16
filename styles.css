@@ -1,36 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Playwrite+NZ+Basic:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "playwrite nz basic", courgette, roboto, Verdana, Geneva, Tahoma, sans-serif;
 }
 
 html {
-    font-family: roboto, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+}
+
+img {
+    position: fixed;
+    height: 100%;
+    width: 100%;
 }
 
 body {
-    background-color: #000;
     color: #fff;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
 }
 
 #bookcase {
-    border: 5px solid red;
     display: grid;
     grid-template-columns: repeat(5, 300px);
+    margin: 100px 0;
+}
+
+#add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .book {
-    border: 3px solid #186dce;
+    border: 5px solid black;
+    background-color: #0000009d;
+    z-index: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .remove-book {
-    fill: #a013137e;
+    fill: #a0131393;
     width: 30px;
     position: relative;
     top: 10px;
@@ -38,11 +53,11 @@ body {
 }
 
 .remove-book:hover {
-    fill: #a01313b4;
+    fill: #a01313;
 }
 
 .edit-book {
-    fill: #1350a07e;
+    fill: #1350a093;
     width: 30px;
     position: relative;
     top: 25px;
@@ -50,14 +65,14 @@ body {
 }
 
 .edit-book:hover {
-    fill: #1350a0b4;
+    fill: #1350a0;
 }
 
 .book-cover {
     width: 200px;
     height: 300px;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr auto;
     grid-template-rows: 1fr auto;
     margin-top: -35px;
 }
@@ -66,43 +81,88 @@ body {
     object-fit: cover;
     position: absolute;
     z-index: -1;
-    opacity: 0.4;
     width: 200px;
     height: 300px;
 }
 
 .genre-list {
     list-style-type: none;
-    margin: 10px;
+    overflow: auto;
+    scrollbar-width: none;
 }
 
 .genre {
-    margin: 5px 0;
+    max-width: 153px;
+    width: fit-content;
+    word-wrap: break-word;
+    background-color: #000;
+    font-size: 0.7rem;
+    padding: 6px;
+    margin: 3px;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .read-status {
-    width: 30px;
+    width: 35px;
     justify-self: right;
-    margin: 10px;
+    background-color: #000;
+    max-height: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 3px;
 }
 
 #read {
-    display: inline;
-    fill: #21cf4c7a;
+    display: flex;
+    fill: #21cf4c;
 }
 
 #not-read {
-    display: inline;
-    fill: #cf21217a;
+    display: flex;
+    fill: #cf2121;
 }
 
 .rating {
-    margin: 10px;
+    background-color: #000;
+    max-width: fit-content;
+    max-height: fit-content;
+    font-size: 0.8rem;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .page-count {
     justify-self: right;
-    margin: 10px;
+    background-color: #000;
+    max-height: fit-content;
+    font-size: 0.8rem;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+.book-author {
+    background-color: #000;
+    width: 150px;
+    text-align: center;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+    word-wrap: break-word;
+}
+
+.book-title {
+    background-color: #000;
+    width: 200px;
+    max-width: 200px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    word-wrap: break-word;
 }
 
 #add-book-cover {
@@ -122,20 +182,23 @@ form {
 
 #book-form {
     top: 50px;
-    border: 5px solid orange;
-    position: absolute;
+    border: 5px solid black;
+    position: fixed;
     width: 700px;
     height: 850px;
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: #414141;
+    background: radial-gradient(#8a8a8a60, #000000b4);
+    backdrop-filter: blur(5px);
+    text-shadow: 0 0 20px black;
 }
 
 .check {
     display: none;
     gap: 10px;
-    margin-top: -7px;
+    margin-top: -15px;
+    margin-bottom: -10px;
 }
 
 .check input {
@@ -145,7 +208,7 @@ form {
 .book-query {
     display: flex;
     flex-direction: column;
-    margin: 20px 0;
+    margin: 15px 0;
     font-size: 1.5rem;
 }
 
@@ -163,7 +226,8 @@ form {
 
 .book-query input,
 select {
-    height: 30px;
+    outline: none;
+    height: 35px;
     font-size: 1.2rem;
     padding-left: 5px;
 }
@@ -185,6 +249,7 @@ select {
 
 #submit-change {
     display: none;
+    margin-top: -25px;
 }
 
 .radio {
